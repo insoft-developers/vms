@@ -1,0 +1,44 @@
+name: Deploy Laravel to cPanel via SSH
+
+on:
+  push:
+    branches:
+      - main  # ubah sesuai branch default kamu
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1' # atau versi sesuai Laravel kamu
+          extensions: mbstring, bcmath, xml, ctype, json, tokenizer, pdo, openssl
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Deploy via SCP to cPanel
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.CPANEL_SSH_HOST }}
+          username: ${{ secrets.CPANEL_SSH_USER }}
+          key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
+          source: "."                # folder yang diupload
+          target: "public_html/vms.gen-zi.id/"     # ubah sesuai path Laravel kamu di server
+
+      - name: Run deploy script via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.CPANEL_SSH_HOST }}
+          username: ${{ secrets.CPANEL_SSH_USER }}
+          key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
+          script: |
+            cd public_html/vms.gen-zi.id/
+            php artisan migrate --force
+            php artisan config:cache
+            php artisan route:cache
