@@ -37,7 +37,7 @@ jobs:
           host: ${{ secrets.CPANEL_SSH_HOST }}
           username: ${{ secrets.CPANEL_SSH_USER }}
           key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
-          port: 2223
+          port: ${{ secrets.SSH_PORT }}
           script: |
             cd public_html/vms.gen-zi.id/
             php artisan migrate --force
