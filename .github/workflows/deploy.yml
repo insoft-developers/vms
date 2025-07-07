@@ -28,6 +28,7 @@ jobs:
           host: ${{ secrets.CPANEL_SSH_HOST }}
           username: ${{ secrets.CPANEL_SSH_USER }}
           key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}                       
           source: "."                # folder yang diupload
           target: "public_html/vms.gen-zi.id/"     # ubah sesuai path Laravel kamu di server
 
