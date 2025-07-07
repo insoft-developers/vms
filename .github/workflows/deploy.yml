@@ -51,6 +51,6 @@ jobs:
             ls -l artisan
 
             # Run Laravel optimizations
-            php artisan migrate --force || echo "Migration failed"
-            php artisan config:cache || echo "Config cache failed"
-            php artisan route:cache || echo "Route cache failed"
+            /usr/local/bin/ea-php82 artisan migrate --force || echo "Migration failed"
+            /usr/local/bin/ea-php82 artisan config:cache || echo "Config cache failed"
+            /usr/local/bin/ea-php82 artisan route:cache || echo "Route cache failed"
