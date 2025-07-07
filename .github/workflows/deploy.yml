@@ -39,6 +39,7 @@ jobs:
             SOURCE: "."
             REMOTE_HOST: ${{ secrets.CPANEL_SSH_HOST }}
             REMOTE_USER: ${{ secrets.CPANEL_SSH_USER }}
+            REMOTE_PORT: ${{ secrets.SSH_PORT }}
             TARGET: "/home/gens7193/public_html/vms.gen-zi.id"
 
         - name: Run Remote/Artisan Commands
