@@ -1,51 +1,54 @@
-name: Deploy Laravel to cPanel via SSH
+name: Deploy Application
 
 on:
-  push:
-    branches:
-      - master  # ubah sesuai branch default kamu
+    push:
+        branches:
+            - master
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    deploy:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+        steps:
+        - name: Checkout Code
+          uses: actions/checkout@v3
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1' # atau versi sesuai Laravel kamu
-          extensions: mbstring, bcmath, xml, ctype, json, tokenizer, pdo, openssl
+        - name: Setup PHP
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: 8.1
 
-      - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader
+        - name: Install Composer Dependencies
+          run: composer install --optimize-autoloader --no-dev --no-progress --no-interaction --prefer-dist
 
-      - name: Deploy via SCP to cPanel
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.CPANEL_SSH_HOST }}
-          username: ${{ secrets.CPANEL_SSH_USER }}
-          key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}                       
-          source: "."                # folder yang diupload
-          target: "public_html/vms.gen-zi.id/"     # ubah sesuai path Laravel kamu di server
+        - name: Install Node JS
+          uses: actions/setup-node@v3
+          with: 
+            node-version: '20'
 
-      - name: Run deploy script via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.CPANEL_SSH_HOST }}
-          username: ${{ secrets.CPANEL_SSH_USER }}
-          key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          debug: true
-          script: |
-            echo "Connected to $(hostname)"
-            whoami
-            pwd
-            ls -al
-            cd public_html/vms.gen-zi.id/
-            php artisan migrate --force
-            php artisan config:cache
-            php artisan route:cache
+        - name: Install NPM Dependencies
+          run: npm install
+
+        - name: Build NPM Asset
+          run: npm run
+
+        - name: Synchronize Files to Server
+          uses: easingthemes/ssh-deploy@v2.1.5
+          env: 
+            SSH_PRIVATE_KEY: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }} 
+            SOURCE: "."
+            REMOTE_HOST: ${{ secrets.CPANEL_SSH_HOST }}
+            REMOTE_USER: ${{ secrets.CPANEL_SSH_USER }}
+            TARGET: "/home/gens7193/public_html/vms.gen-zi.id"
+
+        - name: Run Remote/Artisan Commands
+          uses: appleboy/ssh-action@v0.1.6
+          with: 
+            host: ${{ secrets.CPANEL_SSH_HOST }}
+            port: ${{ secrets.SSH_PORT }}
+            username: ${{ secrets.CPANEL_SSH_USER }}
+            key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
+            script: |
+                cd /home/gens7193/public_html/vms.gen-zi.id
+                php artisan migrate --force
+                php artisan optimize
