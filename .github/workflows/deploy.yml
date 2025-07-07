@@ -30,7 +30,7 @@ jobs:
           key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}                       
           source: "."                # folder yang diupload
-          target: "public_html/vms.gen-zi.id/"     # ubah sesuai path Laravel kamu di server
+          target: "public_html/vms.gen-zi.id"     # ubah sesuai path Laravel kamu di server
 
       - name: Run deploy script via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -45,7 +45,7 @@ jobs:
             whoami
             pwd
             ls -al
-            cd public_html/vms.gen-zi.id/public/
+            cd public_html/vms.gen-zi.id
             php artisan migrate --force
             php artisan config:cache
             php artisan route:cache
