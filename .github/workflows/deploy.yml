@@ -3,7 +3,7 @@ name: Deploy Laravel to cPanel via SSH
 on:
   push:
     branches:
-      - master  # ubah sesuai branch default kamu
+      - master  # Ubah jika pakai branch lain
 
 jobs:
   deploy:
@@ -16,23 +16,25 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1' # atau versi sesuai Laravel kamu
+          php-version: '8.1'
           extensions: mbstring, bcmath, xml, ctype, json, tokenizer, pdo, openssl
 
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader
 
-      - name: Deploy via SCP to cPanel
+      - name: Upload files to cPanel via SCP
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.CPANEL_SSH_HOST }}
           username: ${{ secrets.CPANEL_SSH_USER }}
           key: ${{ secrets.CPANEL_SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}                       
-          source: "."                # folder yang diupload
-          target: "public_html/vms.gen-zi.id"     # ubah sesuai path Laravel kamu di server
+          port: ${{ secrets.SSH_PORT }}
+          source: "."                      # semua file
+          target: "public_html/vms.gen-zi.id"
+          overwrite: true
+          strip_components: 1              # penting agar tidak mengirim ke subfolder ./source-root
 
-      - name: Run deploy script via SSH
+      - name: Run Laravel deployment commands via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.CPANEL_SSH_HOST }}
@@ -42,10 +44,13 @@ jobs:
           debug: true
           script: |
             echo "Connected to $(hostname)"
-            whoami
+            cd public_html/vms.gen-zi.id || { echo "Target folder not found"; exit 1; }
+            echo "Current directory:"
             pwd
-            ls -al
-            cd public_html/vms.gen-zi.id
-            php artisan migrate --force
-            php artisan config:cache
-            php artisan route:cache
+            echo "Checking artisan file:"
+            ls -l artisan
+
+            # Run Laravel optimizations
+            php artisan migrate --force || echo "Migration failed"
+            php artisan config:cache || echo "Config cache failed"
+            php artisan route:cache || echo "Route cache failed"
