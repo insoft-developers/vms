@@ -3,7 +3,7 @@ name: Deploy Laravel to cPanel via SSH
 on:
   push:
     branches:
-      - main  # ubah sesuai branch default kamu
+      - master  # ubah sesuai branch default kamu
 
 jobs:
   deploy:
