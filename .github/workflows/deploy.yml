@@ -20,7 +20,7 @@ jobs:
           extensions: mbstring, bcmath, xml, ctype, json, tokenizer, pdo, openssl
 
       - name: Install Composer dependencies
-        run: composer install --no-dev --optimize-autoloader
+        run:  composer install --no-dev --optimize-autoloader --no-scripts
 
       - name: Upload files to cPanel via SCP
         uses: appleboy/scp-action@v0.1.4
