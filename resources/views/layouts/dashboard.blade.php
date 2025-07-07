@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>GIG CICD | Responsive Bootstrap 4 Admin Dashboard Template</title>
+    <title>GIGE CICD | Responsive Bootstrap 4 Admin Dashboard Template</title>
 
     @include('partials._head')
 </head>
