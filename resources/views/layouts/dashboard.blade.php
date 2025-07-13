@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>VMS2-ADMIN PANEL</title>
+    <title>VMS - VEHICLE MANAGEMENT SYSTEM</title>
 
     @include('partials._head')
 </head>
 <body class="" id="app">
-@include('partials._body')
+    @include('partials._body')
+        
+
+    
+   
+
 </body>
 </html>

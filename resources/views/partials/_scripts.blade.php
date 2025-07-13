@@ -16,3 +16,8 @@
 
 <!-- app JavaScript -->
 <script src="{{ asset('js/app.js?v=1.0.1') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+

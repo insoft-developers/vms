@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LicenseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +30,19 @@ Route::get('/dashboard', function () {
 // Dashboard Routes
   Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
   Route::get('/analytics', [HomeController::class, 'analytics'])->name('analytics');
+
+
+  Route::resource('department', DepartmentController::class);
+  Route::get('/department_table', [DepartmentController::class, 'departmentTable'])->name('department.table');
+
+
+  Route::resource('license', LicenseController::class);
+  Route::get('/license_table', [LicenseController::class, 'licenseTable'])->name('license.table');
+
+  Route::resource('driver', DriverController::class);
+  Route::get('/driver_table', [DriverController::class, 'driverTable'])->name('driver.table');
+
+
 
   //App Details Pages Routs
   Route::group(['prefix' => 'app'], function() {
