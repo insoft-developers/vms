@@ -53,7 +53,7 @@
                 </li>
 
                 <li class="list-sidebar">
-                    <a href="#behaviour" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                    <a href="#vehicle" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
                             fill="currentColor">
                             <path
@@ -64,10 +64,36 @@
                         <i class="las la-angle-right iq-arrow-right arrow-active"></i>
                         <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
                     </a>
-                    <ul id="user2" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li class="{{ activeRoute('app/user/profile') }}">
+                    <ul id="vehicle" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li class="list-subtitle">
                             <a href="#">
-                                <i class="las la-minus"></i><span>User Profile</span>
+                                <i class="las la-minus"></i><span class="subtitle">Vehicle Data</span>
+                            </a>
+                        </li>
+                        <li class="list-subtitle">
+                            <a href="#">
+                                <i class="las la-minus"></i><span class="subtitle">Merk</span>
+                            </a>
+                        </li>
+                        <li class="list-subtitle">
+                            <a href="#">
+                                <i class="las la-minus"></i><span class="subtitle">Jenis</span>
+                            </a>
+                        </li>
+                        <li class="list-subtitle">
+                            <a href="#">
+                                <i class="las la-minus"></i><span class="subtitle">Type</span>
+                            </a>
+                        </li>
+                        <li class="list-subtitle">
+                            <a href="#">
+                                <i class="las la-minus"></i><span class="subtitle">Insurance Company</span>
+                            </a>
+                        </li>
+
+                        <li class="list-subtitle">
+                            <a href="{{ url('location') }}">
+                                <i class="las la-minus"></i><span class="subtitle">Location</span>
                             </a>
                         </li>
 

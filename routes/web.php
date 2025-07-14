@@ -4,6 +4,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\LocationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,9 @@ Route::get('/dashboard', function () {
 
   Route::resource('driver', DriverController::class);
   Route::get('/driver_table', [DriverController::class, 'driverTable'])->name('driver.table');
+
+  Route::resource('location', LocationController::class);
+  Route::get('location_table', [LocationController::class, 'locationTable'])->name('location.table');
 
 
 
