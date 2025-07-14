@@ -6,12 +6,12 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Location</h4>
+                            <h4 class="card-title">Insurance Company</h4>
 
                         </div>
                         <button onclick="addData()" style="float: right;" type="button"
                             class="btn btn-sm btn-success rounded-pill mt-2">+ Add
-                            Location</button>
+                            Company</button>
 
                     </div>
                     <div class="card-body">
@@ -21,7 +21,7 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">#</th>
-                                        <th scope="col">Location Name</th>
+                                        <th scope="col">Company Name</th>
                                         <th scope="col">Created Date</th>
                                         <th scope="col">Updated Date</th>
                                         <th style="width: 200px;" scope="col">Actions</th>
@@ -54,9 +54,9 @@
 
                         <input type="hidden" id="id" name="id">
                         <div class="form-group">
-                            <label>Location Name:</label>
-                            <input type="text" class="form-control" id="location_name" name="location_name"
-                                placeholder="Location Name Here..">
+                            <label>Company Name:</label>
+                            <input type="text" class="form-control" id="company_name" name="company_name"
+                                placeholder="Company Name Here..">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -87,7 +87,7 @@
     $('#table-list').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{ route('location.table') }}',
+        ajax: '{{ route('insurance.table') }}',
         order: [
             [0, "desc"]
         ],
@@ -104,8 +104,8 @@
                 searchable: false
             },
             {
-                data: 'location_name',
-                name: 'location_name'
+                data: 'company_name',
+                name: 'company_name'
             },
             {
                 data: 'created_at',
@@ -128,7 +128,7 @@
         resetForm();
         save_method = "add";
         $('input[name=_method]').val('POST');
-        $(".modal-title").text("Add Location Data");
+        $(".modal-title").text("Add Company Data");
         $("#modal-add").modal("show");
         unloading();
     }
@@ -137,8 +137,8 @@
         loading();
         e.preventDefault();
         var id = $('#id').val();
-        if (save_method == "add") url = "{{ url('/location') }}";
-        else url = "{{ url('/location') . '/' }}" + id;
+        if (save_method == "add") url = "{{ url('/insurance') }}";
+        else url = "{{ url('/insurance') . '/' }}" + id;
         $.ajax({
             url: url,
             type: "POST",
@@ -168,14 +168,14 @@
         save_method = "edit";
         $('input[name=_method]').val('PATCH');
         $.ajax({
-            url: "{{ url('/location') }}" + "/" + id + "/edit",
+            url: "{{ url('/insurance') }}" + "/" + id + "/edit",
             type: "GET",
             dataType: "JSON",
             success: function(data) {
                 $('#modal-add').modal("show");
-                $('.modal-title').text("Edit Location Data");
+                $('.modal-title').text("Edit Company Data");
                 $('#id').val(data.id);
-                $("#location_name").val(data.location_name);
+                $("#company_name").val(data.company_name);
             }
         })
     }
@@ -194,7 +194,7 @@
             if (result.isConfirmed) {
                 var csrf_token = $('meta[name="csrf-token"]').attr('content');
                 $.ajax({
-                    url: "{{ url('/location') }}" + '/' + id,
+                    url: "{{ url('/insurance') }}" + '/' + id,
                     type: "POST",
                     data: {
                         '_method': 'DELETE',
@@ -215,6 +215,6 @@
     }
 
     function resetForm() {
-        $("#location_name").val("");
+        $("#company_name").val("");
     }
 </script>

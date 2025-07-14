@@ -86,7 +86,7 @@
                             </a>
                         </li>
                         <li class="list-subtitle">
-                            <a href="#">
+                            <a href="{{ url('insurance') }}">
                                 <i class="las la-minus"></i><span class="subtitle">Insurance Company</span>
                             </a>
                         </li>
