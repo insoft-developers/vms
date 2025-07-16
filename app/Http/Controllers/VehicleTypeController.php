@@ -2,33 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\License;
+use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
-class LicenseController extends Controller
+class VehicleTypeController extends Controller
 {
-    public function licenseTable()
+   public function vehicleTypeTable()
     {
         $userid = Auth::user()->id ?? 1;
-        $data = License::select(['id', 'license_name', 'created_at', 'updated_at'])->where('userid', $userid);
+        $data = VehicleType::select(['id', 'vehicle_type','created_at','updated_at'])->where('userid', $userid);
         return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('created_at', function ($row) {
+            ->addColumn('created_at', function($row){
                 return date('d-m-Y', strtotime($row->created_at));
             })
-            ->addColumn('updated_at', function ($row) {
+            ->addColumn('updated_at', function($row){
                 return date('d-m-Y', strtotime($row->updated_at));
             })
             ->addColumn('action', function ($row) {
                 $html = '';
                 $html .= '<div style="margin-top:-10px;"><center>';
+
                 $html .= '<a title="Edit Data" href="javascript:void(0);" onclick="editData(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-edit fa-tombol-edit"></i></a>';
                 $html .= '<a title="Delete Data" href="javascript:void(0);" onclick="deleteData(' . $row->id . ')"><i class="fa fa-trash fa-tombol-delete"></i></a>';
                 $html .= '</center></div>';
-                return $html;
                 return $html;
             })
             ->rawColumns(['action'])
@@ -42,9 +42,9 @@ class LicenseController extends Controller
      */
     public function index()
     {
-        $view = 'license';
+        $view = 'vehicle-type';
 
-        return view('frontend.license.index', compact('view'));
+        return view('frontend.vehicle.type', compact('view'));
     }
 
     /**
@@ -68,7 +68,7 @@ class LicenseController extends Controller
         $input = $request->all();
 
         $rules = [
-            'license_name' => 'required',
+            'vehicle_type' => 'required',
         ];
 
         $validator = Validator::make($input, $rules);
@@ -90,7 +90,7 @@ class LicenseController extends Controller
         try {
 
             $input['userid'] = Auth::user()->id ?? 1;
-            License::create($input);
+            VehicleType::create($input);
             return response()->json([
                 'success' => true,
                 'message' => 'success',
@@ -122,7 +122,7 @@ class LicenseController extends Controller
      */
     public function edit($id)
     {
-        $data = License::find($id);
+        $data = VehicleType::find($id);
         return $data;
     }
 
@@ -138,7 +138,7 @@ class LicenseController extends Controller
         $input = $request->all();
 
         $rules = [
-            'license_name' => 'required',
+            'vehicle_type' => 'required',
         ];
 
         $validator = Validator::make($input, $rules);
@@ -160,7 +160,7 @@ class LicenseController extends Controller
         try {
 
             $input['userid'] = Auth::user()->id ?? 1;
-            $data = License::find($id);
+            $data = VehicleType::find($id);
             $data->update($input);
             return response()->json([
                 'success' => true,
@@ -182,7 +182,7 @@ class LicenseController extends Controller
      */
     public function destroy($id)
     {
-        $data = License::destroy($id);
+        $data = VehicleType::destroy($id);
         return $data;
     }
 }

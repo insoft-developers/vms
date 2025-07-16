@@ -3,7 +3,13 @@
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InsuranceCompanyController;
 use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\VehicleJenisController;
+use App\Http\Controllers\VehicleMerkController;
+use App\Http\Controllers\VehicleTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +47,25 @@ Route::get('/dashboard', function () {
 
   Route::resource('driver', DriverController::class);
   Route::get('/driver_table', [DriverController::class, 'driverTable'])->name('driver.table');
+
+  Route::resource('location', LocationController::class);
+  Route::get('location_table', [LocationController::class, 'locationTable'])->name('location.table');
+
+  Route::resource('insurance', InsuranceCompanyController::class);
+  Route::get('/insurance_table', [InsuranceCompanyController::class, 'insuranceTable'])->name('insurance.table');
+
+  Route::resource('vehicle_type', VehicleTypeController::class);
+  Route::get('/vehicle_type_table', [VehicleTypeController::class, 'vehicleTypeTable'])->name('vehicle.type.table');
+
+  Route::resource('vehicle_jenis', VehicleJenisController::class);
+  Route::get('/vehicle_jenis_table', [VehicleJenisController::class, 'vehicleJenisTable'])->name('vehicle.jenis.table');
+
+  Route::resource('vehicle_merk', VehicleMerkController::class);
+  Route::get('/vehicle_merk_table', [VehicleMerkController::class, 'vehicleMerkTable'])->name('vehicle.merk.table');
+
+  Route::resource('vehicle', VehicleController::class);
+  Route::get('/vehicle_table', [VehicleController::class, 'vehicleTable'])->name('vehicle.table');
+
 
 
 
