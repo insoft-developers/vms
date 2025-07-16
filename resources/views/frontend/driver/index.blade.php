@@ -20,7 +20,6 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th style="width: 200px;" scope="col">Actions</th>
                                         <th scope="col">Foto</th>
                                         <th scope="col">Driver Name</th>
                                         <th scope="col">Phone</th>
@@ -28,6 +27,7 @@
                                         <th scope="col">PID</th>
                                         <th scope="col">Joining Date</th>
                                         <th scope="col">Status</th>
+                                        <th style="width: 200px;" scope="col">Actions</th>
 
                                     </tr>
                                 </thead>
@@ -230,12 +230,7 @@
                 data: 'id',
                 name: 'id'
             },
-            {
-                data: 'action',
-                name: 'action',
-                orderable: false,
-                searchable: false
-            },
+            
             {
                 data: 'profile_image',
                 name: 'profile_image'
@@ -263,6 +258,12 @@
             {
                 data: 'is_active',
                 name: 'is_active'
+            },
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
             },
 
         ]

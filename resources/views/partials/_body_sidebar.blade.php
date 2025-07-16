@@ -66,22 +66,22 @@
                     </a>
                     <ul id="vehicle" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                         <li class="list-subtitle">
-                            <a href="#">
+                            <a href="{{ url('vehicle') }}">
                                 <i class="las la-minus"></i><span class="subtitle">Vehicle Data</span>
                             </a>
                         </li>
                         <li class="list-subtitle">
-                            <a href="#">
+                            <a href="{{ url('vehicle_merk') }}">
                                 <i class="las la-minus"></i><span class="subtitle">Merk</span>
                             </a>
                         </li>
                         <li class="list-subtitle">
-                            <a href="#">
+                            <a href="{{ url('vehicle_jenis') }}">
                                 <i class="las la-minus"></i><span class="subtitle">Jenis</span>
                             </a>
                         </li>
                         <li class="list-subtitle">
-                            <a href="#">
+                            <a href="{{ url('vehicle_type') }}">
                                 <i class="las la-minus"></i><span class="subtitle">Type</span>
                             </a>
                         </li>

@@ -12,7 +12,8 @@ class InsuranceCompanyController extends Controller
 {
    public function insuranceTable()
     {
-        $data = InsuranceCompany::select(['id', 'company_name','created_at','updated_at']);
+        $userid = Auth::user()->id ?? 1;
+        $data = InsuranceCompany::select(['id', 'company_name','created_at','updated_at'])->where('userid', $userid);
         return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('created_at', function($row){
@@ -23,10 +24,11 @@ class InsuranceCompanyController extends Controller
             })
             ->addColumn('action', function ($row) {
                 $html = '';
-                $html .= '<div style="margin-top:-10px;">';
-                $html .= '<button onclick="editData('.$row->id.')" style="margin-right:6px;" type="button" class="btn btn-sm btn-warning rounded-pill mt-2">Edit</button>';
-                $html .= '<button onclick="deleteData('.$row->id.')" type="button" class="btn btn-sm btn-danger rounded-pill mt-2">Delete</button>';
-                $html .= '</div>';
+                $html .= '<div style="margin-top:-10px;"><center>';
+
+                $html .= '<a title="Edit Data" href="javascript:void(0);" onclick="editData(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-edit fa-tombol-edit"></i></a>';
+                $html .= '<a title="Delete Data" href="javascript:void(0);" onclick="deleteData(' . $row->id . ')"><i class="fa fa-trash fa-tombol-delete"></i></a>';
+                $html .= '</center></div>';
                 return $html;
             })
             ->rawColumns(['action'])
