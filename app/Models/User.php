@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
+
 {
     use HasFactory, Notifiable;
 
@@ -23,6 +24,11 @@ class User extends Authenticatable
         'phone_number',
         'email',
         'password',
+        'company_name',
+        'company_address',
+        'company_type',
+        'is_active',
+        'user_level'
     ];
 
     /**

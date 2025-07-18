@@ -8,7 +8,7 @@
                 </a>
             </div>
             <div class="navbar-breadcrumb">
-                <h2 class="ml-2">Welcome back, Mason</h2>
+                <h3 class="ml-2">{{ Auth::user()->company_name }}</h3>
             </div>
             <div class="d-flex align-items-center">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -113,7 +113,7 @@
                                 aria-expanded="false">
                                 <img src="{{ asset('images/user/1.jpg') }}" class="img-fluid rounded" alt="user">
                                 <div class="caption ml-3">
-                                    <h6 class="mb-0 line-height">Mason Protesters
+                                    <h6 class="mb-0 line-height">{{ Auth::user()->name }}
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
                                             fill="currentColor" height="20px" width="20px">
                                             <path fill-rule="evenodd"
@@ -131,9 +131,8 @@
                                                 <div class="rounded-circle profile-icon bg-primary mx-auto d-block">M
                                                 </div>
                                                 <div class="profile-detail mt-3">
-                                                    <h5><a href="{{ route('userdetail.userprofileedit') }}">Mason
-                                                            Protesters</a></h5>
-                                                    <p>mason@gmail.com</p>
+                                                    <h5><a href="{{ route('userdetail.userprofileedit') }}">{{ Auth::user()->name }}</a></h5>
+                                                    <p>{{ Auth::user()->email }}</p>
                                                 </div>
                                                 <form method="POST" action="{{ route('logout') }}">
                                                     @csrf
@@ -144,7 +143,7 @@
                                                     </a>
                                                 </form>
                                             </div>
-                                            <div class="profile-details mt-4 pt-4 border-top">
+                                            {{-- <div class="profile-details mt-4 pt-4 border-top">
                                                 <div class="media align-items-center mb-3">
                                                     <div class="rounded-circle iq-card-icon-small bg-primary">
                                                         A
@@ -181,7 +180,7 @@
                                                         <p class="mb-0 font-size-12">devidworner@gmail.com</p>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>

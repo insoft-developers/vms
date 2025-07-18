@@ -22,9 +22,7 @@
                         <span class="ml-3 side-menu-title">Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <h6 class=" text-uppercase sidebar-text">Main Menu</h6>
-                </li>
+                
                 <li class="list-sidebar">
                     <a href="#user" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M5.23379 7.72989C6.65303 5.48625 9.15342 4 12.0002 4C14.847 4 17.3474 5.48625 18.7667 7.72989L20.4569 6.66071C18.6865 3.86199 15.5612 2 12.0002 2C8.43928 2 5.31393 3.86199 3.54356 6.66071L5.23379 7.72989ZM12.0002 20C9.15342 20 6.65303 18.5138 5.23379 16.2701L3.54356 17.3393C5.31393 20.138 8.43928 22 12.0002 22C15.5612 22 18.6865 20.138 20.4569 17.3393L18.7667 16.2701C17.3474 18.5138 14.847 20 12.0002 20ZM12 8C12.5523 8 13 8.44772 13 9C13 9.55228 12.5523 10 12 10C11.4477 10 11 9.55228 11 9C11 8.44772 11.4477 8 12 8ZM12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12ZM12 15C10.8954 15 10 15.8954 10 17H8C8 14.7909 9.79086 13 12 13C14.2091 13 16 14.7909 16 17H14C14 15.8954 13.1046 15 12 15ZM3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13C3.55228 13 4 12.5523 4 12C4 11.4477 3.55228 11 3 11ZM0 12C0 10.3431 1.34315 9 3 9C4.65685 9 6 10.3431 6 12C6 13.6569 4.65685 15 3 15C1.34315 15 0 13.6569 0 12ZM20 12C20 11.4477 20.4477 11 21 11C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13C20.4477 13 20 12.5523 20 12ZM21 9C19.3431 9 18 10.3431 18 12C18 13.6569 19.3431 15 21 15C22.6569 15 24 13.6569 24 12C24 10.3431 22.6569 9 21 9Z"></path></svg>
@@ -218,8 +216,6 @@
                 <li class="list-sidebar">
                     <a href="#vehicle" class="collapsed" data-toggle="collapse" aria-expanded="false">
 
-
-
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
                             fill="currentColor">
                             <path
@@ -305,6 +301,28 @@
                 </li>
 
                 <li class="list-sidebar">
+                    <a href="#settings" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
+                            fill="currentColor">
+                            <path
+                                d="M12 1L21.5 6.5V17.5L12 23L2.5 17.5V6.5L12 1ZM12 3.311L4.5 7.65311V16.3469L12 20.689L19.5 16.3469V7.65311L12 3.311ZM12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16ZM12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z">
+                            </path>
+                        </svg>
+                        <span class="ml-3 side-menu-title">App Settings</span>
+                        <i class="las la-angle-right iq-arrow-right arrow-active"></i>
+                        <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
+                    </a>
+                    <ul id="settings" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                        <li class="list-subtitle">
+                            <a href="{{ url('driver') }}">
+                                <i class="las la-minus"></i><span class="subtitle">Profile Setting</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="list-sidebar">
                     <a href="#reports" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
                             fill="currentColor">
@@ -325,31 +343,10 @@
 
                     </ul>
                 </li>
-                <li class="list-sidebar">
-                    <a href="#settings" class="collapsed" data-toggle="collapse" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"
-                            fill="currentColor">
-                            <path
-                                d="M12 1L21.5 6.5V17.5L12 23L2.5 17.5V6.5L12 1ZM12 3.311L4.5 7.65311V16.3469L12 20.689L19.5 16.3469V7.65311L12 3.311ZM12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16ZM12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z">
-                            </path>
-                        </svg>
-                        <span class="ml-3 side-menu-title">App Settings</span>
-                        <i class="las la-angle-right iq-arrow-right arrow-active"></i>
-                        <i class="las la-angle-down iq-arrow-right arrow-hover"></i>
-                    </a>
-                    <ul id="user2" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                        <li class="{{ activeRoute('app/user/profile') }}">
-                            <a href="#">
-                                <i class="las la-minus"></i><span>User Profile</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
 
             </ul>
         </nav>
 
-        <div class="pt-5 pb-2"></div>
+        <div class="pt-5 pb-2" style="margin-top:150px;"></div>
     </div>
 </div>
