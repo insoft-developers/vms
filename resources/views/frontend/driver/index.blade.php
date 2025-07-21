@@ -10,8 +10,8 @@
 
                         </div>
                         <button onclick="addData()" style="float: right;" type="button"
-                            class="btn btn-sm btn-success rounded-pill mt-2">+ Add
-                            Driver Data</button>
+                            class="btn btn-sm btn-success rounded-pill mt-2">+ Tambah
+                            Data Driver</button>
 
                     </div>
                     <div class="card-body">
@@ -20,12 +20,10 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Foto</th>
-                                        <th scope="col">Driver Name</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">License Number</th>
-                                        <th scope="col">PID</th>
-                                        <th scope="col">Joining Date</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col" style="white-space: normal;">Alamat</th>
+                                        <th scope="col">Kota</th>
+                                        <th scope="col">No. HP</th>
                                         <th scope="col">Status</th>
                                         <th style="width: 200px;" scope="col">Actions</th>
 
@@ -59,56 +57,81 @@
                             <div class="col-4">
 
                                 <input type="hidden" id="id" name="id">
+
                                 <div class="form-group">
-                                    <label>Driver Name:</label>
-                                    <input type="text" class="form-control" id="driver_name" name="driver_name"
-                                        placeholder="Driver Name Here..">
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone Number:</label>
-                                    <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                        placeholder="Phone Number Here..">
-                                </div>
-                                <div class="form-group">
-                                    <label>Profile Image:</label>
+                                    <label>Upload Foto Anda:</label>
+                                    <center><img id="profile-preview" class="profile-image-upload"
+                                            src="{{ asset('images/avatar_foto.webp') }}"></center>
                                     <input type="file" class="form-control" id="profile_image" name="profile_image"
-                                        placeholder="Profile Image Here.." accept="*.jpg, *.png, *.jpeg">
+                                        placeholder="Profile Image Here.." accept=".jpg, .png, .jpeg"
+                                        style="display: none;">
                                 </div>
-
-                                <div class="form-group">
-                                    <label>Gender:</label>
-                                    <select class="form-control" id="gender" name="gender">
-                                        <option value="">Select</option>
-                                        <option value="Laki-Laki">Laki-Laki</option>
-                                        <option value="Perempuan">Perempuan</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Status:</label>
-                                    <select class="form-control" id="is_active" name="is_active">
-                                        <option value="">Select</option>
-                                        <option value="1">Active</option>
-                                        <option value="0">Not Active</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address:</label>
-                                    <textarea class="form-control" id="address" name="address" placeholder="Address Here.."></textarea>
-                                </div>
-
                             </div>
                             <div class="col-4">
-
                                 <div class="form-group">
-                                    <label>Personal Identity Number (KTP):</label>
-                                    <input type="text" class="form-control" id="personal_identity_number"
-                                        name="personal_identity_number" placeholder="Personal Identity Number Here..">
+                                    <label>Nama Driver:</label>
+                                    <input type="text" class="form-control" id="driver_name" name="driver_name"
+                                        placeholder="masukkan nama driver..">
                                 </div>
                                 <div class="form-group">
-                                    <label>Personal Identity Type:</label>
+                                    <label>Tempat Lahir:</label>
+                                    <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir"
+                                        placeholder="masukkan tempat lahir..">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Lahir:</label>
+                                    <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
+                                        placeholder="masukkan tanggal lahir..">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>Alamat:</label>
+                                    <textarea style="height: 155px;" class="form-control" id="address" name="address" placeholder="masukkan alamat.."></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>RT</label>
+                                            <input type="text" id="rt" name="rt" class="form-control"
+                                                placeholder="masukkan no RT">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>RW</label>
+                                            <input type="text" id="rw" name="rw" class="form-control"
+                                                placeholder="masukkan no RW">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kecamatan:</label>
+                                    <input type="text" class="form-control" id="kecamatan" name="kecamatan"
+                                        placeholder="masukkan nama kecamatan..">
+                                </div>
+                                <div class="form-group">
+                                    <label>Kota:</label>
+                                    <input type="text" class="form-control" id="kota" name="kota"
+                                        placeholder="masukkan nama kota..">
+                                </div>
+                                <div class="form-group">
+                                    <label>Provinsi:</label>
+                                    <input type="text" class="form-control" id="provinsi" name="provinsi"
+                                        placeholder="masukkan nama provinsi..">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Nomor Idenditas Diri:</label>
+                                    <input type="text" maxlength="16" pattern="\d{1,16}" inputmode="numeric"
+                                        class="form-control" id="personal_identity_number"
+                                        name="personal_identity_number" placeholder="masukkan nomor identitas diri..">
+                                </div>
+                                <div class="form-group">
+                                    <label>Jenis Identitas Diri:</label>
                                     <select class="form-control" id="personal_identity_type"
                                         name="personal_identity_type">
-                                        <option value="">Select</option>
+                                        <option value="">Pilih</option>
                                         <option value="KTP">KTP</option>
                                         <option value="SIM">SIM</option>
                                         <option value="PASPOR">PASPOR</option>
@@ -116,36 +139,63 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Personal Identity Image:</label>
+                                    <label>Foto Identitas Diri:</label>
                                     <input type="file" class="form-control" id="personal_identity_image"
-                                        name="personal_identity_image" placeholder="Personal Identity Image Here.."
+                                        name="personal_identity_image" placeholder="masukkan foto identitas diri.."
                                         accept="*.jpg, *.png, *.jpeg">
                                 </div>
+                            </div>
+                            <div class="col-4">
                                 <div class="form-group">
-                                    <label>Department:</label>
+                                    <label>No HP:</label>
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number"
+                                        placeholder="masukkan no hp..">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="masukkan email..">
+                                </div>
+                                <div class="form-group">
+                                    <label>Jenis Kelamin:</label>
+                                    <select class="form-control" id="gender" name="gender">
+                                        <option value="">Pilih</option>
+                                        <option value="Laki-Laki">Laki-Laki</option>
+                                        <option value="Perempuan">Perempuan</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Agama:</label>
+                                    <select class="form-control" id="agama" name="agama">
+                                        <option value="">Pilih</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Protestan">Protestan</option>
+                                        <option value="Katholik">Katholik</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Budha">Budha</option>
+                                        <option value="Kong Hu Cu">Kong Hu Cu</option>
+                                        <option value="Aliran Kepercayaan">Aliran Kepercayaan</option>
+                                        <option value="Lainnya">Lainnya</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Departemen:</label>
                                     <select class="form-control" id="department_id" name="department_id">
-                                        <option value="">Select</option>
+                                        <option value="">Pilih</option>
                                         @foreach ($department as $dep)
                                             <option value="{{ $dep->id }}">{{ $dep->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Joining Date:</label>
-                                    <input type="date" class="form-control" id="joining_date" name="joining_date"
-                                        placeholder="Joining Date Here..">
-                                </div>
-
-
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label>License Number (SIM):</label>
+                                    <label>Nomor SIM:</label>
                                     <input type="text" class="form-control" id="license_number"
-                                        name="license_number" placeholder="License Number Here..">
+                                        name="license_number" placeholder="masukkan no SIM..">
                                 </div>
                                 <div class="form-group">
-                                    <label>License Type:</label>
+                                    <label>Jenis SIM:</label>
                                     <select class="form-control" id="license_type" name="license_type">
                                         <option value="">Select</option>
                                         @foreach ($license as $l)
@@ -154,20 +204,33 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>License Image:</label>
+                                    <label>Foto SIM:</label>
                                     <input type="file" class="form-control" id="license_image"
-                                        name="license_image" placeholder="Personal Identity Image Here.."
+                                        name="license_image" placeholder="masukkan foto SIM.."
                                         accept="*.jpg, *.png, *.jpeg">
                                 </div>
                                 <div class="form-group">
-                                    <label>License Issue Date:</label>
+                                    <label>Tanggal Terbit SIM:</label>
                                     <input type="date" class="form-control" id="license_issue_date"
-                                        name="license_issue_date" placeholder="License Issue Date Here..">
+                                        name="license_issue_date" placeholder="masukkan tanggal terbit SIM..">
                                 </div>
                                 <div class="form-group">
-                                    <label>License Expired Expired:</label>
+                                    <label>Tanggal Habis Berlaku SIM:</label>
                                     <input type="date" class="form-control" id="license_expired_date"
-                                        name="license_expired_date" placeholder="License Expired Date Here..">
+                                        name="license_expired_date" placeholder="masukkan tanggal habis berlaku SIM.">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tanggal Masuk Kerja:</label>
+                                    <input type="date" class="form-control" id="joining_date" name="joining_date"
+                                        placeholder="masukkan tanggal masuk kerja..">
+                                </div>
+                                <div class="form-group">
+                                    <label>Status:</label>
+                                    <select class="form-control" id="is_active" name="is_active">
+                                        <option value="">Pilih </option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Not Active</option>
+                                    </select>
                                 </div>
 
                             </div>
@@ -209,6 +272,36 @@
 
 <!-- JAVASCRIPT -->
 <script>
+    const input = document.getElementById('personal_identity_number');
+
+    input.addEventListener('input', function() {
+        // Hapus semua karakter non-angka, dan batasi ke 16 digit
+        this.value = this.value.replace(/\D/g, '').slice(0, 16);
+    });
+
+    const input_sim = document.getElementById('license_number');
+
+    input_sim.addEventListener('input', function() {
+        // Hapus semua karakter non-angka, dan batasi ke 16 digit
+        this.value = this.value.replace(/\D/g, '');
+    });
+
+    const input_phone = document.getElementById('phone_number');
+
+    input_phone.addEventListener('input', function() {
+        // Hapus semua karakter non-angka, dan batasi ke 16 digit
+        this.value = this.value.replace(/\D/g, '').slice(0, 13);
+    });
+
+    $('#profile-preview').click(function() {
+        $('#profile_image').trigger('click');
+    });
+
+    $("#profile_image").change(function() {
+        document.getElementById('profile-preview').src = window.URL.createObjectURL(this.files[0]);
+
+    });
+
     function loading() {
         $("#btn-save-data").text("Processing....");
         $("#btn-save-data").attr("disabled", true);
@@ -220,6 +313,10 @@
     }
 
     $('#table-list').DataTable({
+        dom: 'Bfrtip', // 'B' = buttons
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ],
         processing: true,
         serverSide: true,
         ajax: '{{ route('driver.table') }}',
@@ -228,33 +325,26 @@
         ],
         columns: [{
                 data: 'id',
-                name: 'id'
-            },
-            
-            {
-                data: 'profile_image',
-                name: 'profile_image'
+                name: 'id',
+                visible: false
             },
             {
                 data: 'driver_name',
                 name: 'driver_name'
             },
             {
+                data: 'address',
+                name: 'address'
+            },
+            {
+                data: 'kota',
+                name: 'kota'
+            },
+            {
                 data: 'phone_number',
                 name: 'phone_number'
             },
-            {
-                data: 'license_number',
-                name: 'license_number'
-            },
-            {
-                data: 'personal_identity_number',
-                name: 'personal_identity_number'
-            },
-            {
-                data: 'joining_date',
-                name: 'joining_date'
-            },
+
             {
                 data: 'is_active',
                 name: 'is_active'
@@ -272,7 +362,7 @@
     function viewData(id) {
         $(".modal-title").text("Detail Driver Data");
         $.ajax({
-            url: "{{ url('driver') }}"+"/"+id,
+            url: "{{ url('driver') }}" + "/" + id,
             type: "GET",
             success: function(data) {
                 $("#modal-view-content").html(data);
@@ -285,8 +375,11 @@
         resetForm();
         save_method = "add";
         $('input[name=_method]').val('POST');
-        $(".modal-title").text("Add Driver Data");
+        $(".modal-title").text("Tambah Data Driver");
         $("#modal-add").modal("show");
+        var avatarURL = "{{ asset('images/avatar_foto.webp') }}";
+        $('#profile-preview').attr('src', avatarURL);
+
         unloading();
     }
 
@@ -330,7 +423,7 @@
             dataType: "JSON",
             success: function(data) {
                 $('#modal-add').modal("show");
-                $('.modal-title').text("Edit Driver Data");
+                $('.modal-title').text("Edit Data Driver");
                 $('#id').val(data.id);
                 $("#driver_name").val(data.driver_name);
                 $("#phone_number").val(data.phone_number);
@@ -348,6 +441,69 @@
                 $("#license_image").val(null);
                 $("#license_issue_date").val(data.license_issue_date);
                 $("#license_expired_date").val(data.license_expired_date);
+                $("#tempat_lahir").val(data.tempat_lahir);
+                $("#tanggal_lahir").val(data.tanggal_lahir);
+                $("#agama").val(data.agama);
+                $("#email").val(data.email);
+                $("#rt").val(data.rt);
+                $("#rw").val(data.rw);
+                $("#kecamatan").val(data.kecamatan);
+                $("#kota").val(data.kota);
+                $("#provinsi").val(data.provinsi);
+
+                if (data.profile_image == null) {
+                    var avatarURL = "{{ asset('images/avatar_foto.webp') }}";
+                } else {
+                    var avatarURL = "{{ asset('storage/drivers') }}" + "/" + data.profile_image;
+                }
+
+                $('#profile-preview').attr('src', avatarURL);
+            }
+        })
+    }
+
+
+    function copyData(id) {
+        save_method = "add";
+        $('input[name=_method]').val('POST');
+        $.ajax({
+            url: "{{ url('/driver') }}" + "/" + id + "/edit",
+            type: "GET",
+            dataType: "JSON",
+            success: function(data) {
+                $('#modal-add').modal("show");
+                $('.modal-title').text("Copy Data Driver");
+                $('#id').val(data.id);
+                $("#driver_name").val(data.driver_name);
+                $("#phone_number").val(data.phone_number);
+                $("#profile_image").val(null);
+                $("#gender").val(data.gender);
+                $("#is_active").val(data.is_active);
+                $("#address").val(data.address);
+                $("#personal_identity_number").val(data.personal_identity_number);
+                $("#personal_identity_type").val(data.personal_identity_type);
+                $("#personal_identity_image").val(null);
+                $("#department_id").val(data.department_id);
+                $("#joining_date").val(data.joining_date);
+                $("#license_number").val(data.license_number);
+                $("#license_type").val(data.license_type);
+                $("#license_image").val(null);
+                $("#license_issue_date").val(data.license_issue_date);
+                $("#license_expired_date").val(data.license_expired_date);
+                $("#tempat_lahir").val(data.tempat_lahir);
+                $("#tanggal_lahir").val(data.tanggal_lahir);
+                $("#agama").val(data.agama);
+                $("#email").val(data.email);
+                $("#rt").val(data.rt);
+                $("#rw").val(data.rw);
+                $("#kecamatan").val(data.kecamatan);
+                $("#kota").val(data.kota);
+                $("#provinsi").val(data.provinsi);
+
+                
+                var avatarURL = "{{ asset('images/avatar_foto.webp') }}";
+                
+                $('#profile-preview').attr('src', avatarURL);
             }
         })
     }
@@ -403,6 +559,15 @@
         $("#license_image").val(null);
         $("#license_issue_date").val("");
         $("#license_expired_date").val("");
+        $("#tempat_lahir").val("");
+        $("#tanggal_lahir").val("");
+        $("#agama").val("");
+        $("#email").val("");
+        $("#rt").val("");
+        $("#rw").val("");
+        $("#kecamatan").val("");
+        $("#kota").val("");
+        $("#provinsi").val("");
     }
 </script>
 </script>

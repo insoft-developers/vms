@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="{{ asset('vendor/tui-calendar/tui-calendar/dist/tui-calendar.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css') }}">
+<!-- DataTables -->
+{{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> --}}
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+
 
 <style>
     .side-menu-title {
@@ -81,6 +85,14 @@
         border-radius: 13px;
     }
 
+    .fa-tombol-copy {
+        color: white;
+        background: blue;
+        padding: 6px 7px;
+        font-size: 12px;
+        border-radius: 13px;
+    }
+
     .table-view {
         width: 100%;
     }
@@ -92,7 +104,7 @@
         font-size: 14px;
     }
 
-    
+
 
     .img-view-profile {
         width: 80px;
@@ -100,5 +112,16 @@
         border-radius: 5px;
         border: 2px solid whitesmoke;
         object-fit: cover;
+    }
+
+    .profile-image-upload {
+        width: 220px;
+        height: 256px;
+        object-fit: cover;
+        display: block;
+        background: lightgrey;
+        border: 2px solid beige;
+        border-radius: 7px;
+        cursor: pointer;
     }
 </style>

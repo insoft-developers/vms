@@ -408,6 +408,10 @@
     }
 
     $('#table-list').DataTable({
+        dom: 'Bfrtip', // 'B' = buttons
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ],
         processing: true,
         serverSide: true,
         ajax: '{{ route('vehicle.table') }}',
@@ -424,7 +428,8 @@
                 data: 'DT_RowIndex',
                 name: 'DT_RowIndex',
                 orderable: false,
-                searchable: false
+                searchable: false,
+                visible: false
             },
             {
                 data: 'vehicle_name',

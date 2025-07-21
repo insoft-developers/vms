@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Str;
 
+use function PHPSTORM_META\map;
+
 class DriverController extends Controller
 {
     public function driverTable()
@@ -36,6 +38,7 @@ class DriverController extends Controller
             ->addColumn('action', function ($row) {
                 $html = '';
                 $html .= '<div style="margin-top:-10px;">';
+                $html .= '<a title="Duplicate Data" href="javascript:void(0);" onclick="copyData(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-copy fa-tombol-copy"></i></a>';
                 $html .= '<a title="Detail Data" href="javascript:void(0);" onclick="viewData(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-list fa-tombol-view"></i></a>';
                 $html .= '<a title="Edit Data" href="javascript:void(0);" onclick="editData(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-edit fa-tombol-edit"></i></a>';
                 $html .= '<a title="Delete Data" href="javascript:void(0);" onclick="deleteData(' . $row->id . ')"><i class="fa fa-trash fa-tombol-delete"></i></a>';
@@ -92,6 +95,15 @@ class DriverController extends Controller
             'license_number' => 'required',
             'license_issue_date' => 'required',
             'license_expired_date' => 'required',
+            'email' => 'email|required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'kecamatan' => 'required',
+            'kota' => 'required',
+            'provinsi' => 'required',
+            'agama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required'
         ];
 
         $validator = Validator::make($input, $rules);
@@ -306,6 +318,15 @@ class DriverController extends Controller
             'license_number' => 'required',
             'license_issue_date' => 'required',
             'license_expired_date' => 'required',
+            'email' => 'email|required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'kecamatan' => 'required',
+            'kota' => 'required',
+            'provinsi' => 'required',
+            'agama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required'
         ];
 
         $validator = Validator::make($input, $rules);
