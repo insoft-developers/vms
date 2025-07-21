@@ -36,18 +36,33 @@ class RegisteredUserController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'phone_number' => 'required|unique:users',
             'password' => 'required|string|confirmed|min:8',
+            'company_name' => 'required',
+            'company_address' => 'required',
+            'company_type' => 'required'
         ]);
 
-        Auth::login($user = User::create([
-            'name' => $request->first_name.' '.$request->last_name,
+        $user = User::create([
+            'name' => $request->first_name . ' ' . $request->last_name,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'phone_number' => $request->phone_number,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]));
+            'company_name' => $request->company_name,
+            'company_address' => $request->company_address,
+            'company_type' => $request->company_type,
+            'user_level' => 1,
+            'is_active' => 0,
+        ]);
 
+        // ✅ Set owner_id = user_id
+        $user->owner_id = $user->id;
+        $user->save();
+
+        // ✅ Login & trigger event
+        Auth::login($user);
         event(new Registered($user));
 
         return redirect(RouteServiceProvider::HOME);

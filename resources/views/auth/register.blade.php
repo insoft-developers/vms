@@ -9,7 +9,7 @@
                       <div class="col-lg-6  content-left">
                          <div class="p-3">
                             <h2 class="mb-2 ">Sign Up</h2>
-                            <p>Create your Glare account.</p>
+                            <p>Create your account.</p>
                             <!-- Session Status -->
                             <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -42,6 +42,38 @@
                                         <label>Phone No. <span class="text-danger">*</span></label>
                                      </div>
                                   </div>
+
+                                  <div class="col-lg-12">
+                                     <div class="floating-label form-group">
+                                        <input class="floating-input form-control" name="company_name" type="text" placeholder=" ">
+                                        <label>Company Name. <span class="text-danger">*</span></label>
+                                     </div>
+                                  </div>
+
+                                  <div class="col-lg-12">
+                                     <div class="floating-label form-group">
+                                        <textarea class="floating-input form-control" name="company_address" placeholder=" "></textarea>
+                                        <label>Company Address. <span class="text-danger">*</span></label>
+                                     </div>
+                                  </div>
+
+                                  <div class="col-lg-12">
+                                       <div class="form-group">
+                                        <select class="floating-input form-control" name="company_type" placeholder=" ">
+                                          <option value="">Select company type</option>
+                                          <option value="perusahaan-perorangan">Perusahaan Perorangan</option>
+                                          <option value="fa">Firma (FA)</option>
+                                          <option value="cv">Persekutuan Komanditer (CV)</option>
+                                          <option value="pt">Perseroan Terbatas (PT)</option>
+                                          <option value="koperasi">Koperasi</option>
+                                          <option value="yayasan">Yayasan</option>
+                                          <option value="bumn">Badan Usaha Milik Negara (BUMN)</option>
+                                          <option value="lainnya">Lainnya</option>
+                                        </select>
+                                        
+                                       </div>
+                                  </div>
+                                  
                                   <div class="col-lg-6">
                                      <div class="floating-label form-group">
                                         <input class="floating-input form-control" type="password" id="password" name="password" required autocomplete="new-password" placeholder=" ">

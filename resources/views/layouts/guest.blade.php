@@ -17,11 +17,19 @@
 
         <!-- remixicon -->
         <link rel="stylesheet" href="{{ asset('vendor/remixicon/fonts/remixicon.css') }}"/>
+       <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
 
     </head>
-    <body class=" " >
+    <body class="" style="background: url({{ asset('images/background.png') }}); background-attachment: fixed; background-size: cover;">
 
-        <div class="wrapper" style="background: url({{ asset('images/background.png') }}); background-attachment: fixed; background-size: cover; ">
+        <div class="wrapper">
             {{ $slot }}
         </div>
          @include('partials._scripts')

@@ -85,6 +85,10 @@
     }
 
     $('#table-list').DataTable({
+        dom: 'Bfrtip', // 'B' = buttons
+        buttons: [
+            'csv', 'excel', 'pdf'
+        ],
         processing: true,
         serverSide: true,
         ajax: '{{ route('insurance.table') }}',
@@ -109,11 +113,13 @@
             },
             {
                 data: 'created_at',
-                name: 'created_at'
+                name: 'created_at',
+                visible: false,
             },
             {
                 data: 'updated_at',
-                name: 'updated_at'
+                name: 'updated_at',
+                visible: false,
             },
             {
                 data: 'action',
