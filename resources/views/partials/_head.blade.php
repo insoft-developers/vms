@@ -25,22 +25,38 @@
 
     .list-subtitle {}
 
-    #table-list {
+    #table-list,
+    #table-list-jenis,
+    #table-list-type,
+    #table-list-location,
+    #table-list-ownership
+     {
         font-size: 14px;
         /* atau ukuran lain seperti 1rem, 12px, dll */
     }
-
+    #table-list-jenis thead th,
+    #table-list-type thead th,
+    #table-list-location thead th,
+    #table-list-ownership thead th,
     #table-list thead th {
         font-size: 14px;
         font-weight: bold;
     }
-
+    #table-list-jenis tbody td,
+    #table-list-type tbody td,
+    #table-list-location tbody td,
+    #table-list-ownership tbody td,
     #table-list tbody td {
         font-size: 14px;
         padding-top: 8px !important;
         padding-bottom: 8px !important;
     }
 
+
+    #table-list-jenis tfoot th,
+    #table-list-type tfoot th,
+    #table-list-location tfoot th,
+    #table-list-ownership tfoot th,
     #table-list tfoot th {
         font-size: 14px;
         font-style: italic;

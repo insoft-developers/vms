@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DriverController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\VehicleJenisController;
 use App\Http\Controllers\VehicleMerkController;
+use App\Http\Controllers\VehicleOwnerController;
+use App\Http\Controllers\VehicleOwnershipController;
 use App\Http\Controllers\VehicleTypeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -91,6 +94,17 @@ Route::group(['middleware' => ['auth', 'verified', 'is_active']], function () {
 
   Route::resource('vehicle', VehicleController::class);
   Route::get('/vehicle_table', [VehicleController::class, 'vehicleTable'])->name('vehicle.table');
+
+  Route::resource('branch', BranchController::class);
+  Route::get('branch_table', [BranchController::class, 'branchTable'])->name('branch.table');
+
+  Route::resource('vehicle_owner', VehicleOwnerController::class);
+  Route::get('vehicle_owner_table', [VehicleOwnerController::class, 'vehicleOwnerTable'])->name('vehicle.owner.table');
+
+  Route::resource('vehicle_ownership', VehicleOwnershipController::class);
+  Route::get('vehicle_ownership_table', [VehicleOwnershipController::class, 'vehicleOwnershipTable'])->name('vehicle.ownership.table');
+
+
 });
 
 

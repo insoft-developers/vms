@@ -26,8 +26,8 @@ class LocationController extends Controller
                 $html = '';
                 $html .= '<div style="margin-top:-10px;"><center>';
 
-                $html .= '<a title="Edit Data" href="javascript:void(0);" onclick="editData(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-edit fa-tombol-edit"></i></a>';
-                $html .= '<a title="Delete Data" href="javascript:void(0);" onclick="deleteData(' . $row->id . ')"><i class="fa fa-trash fa-tombol-delete"></i></a>';
+                $html .= '<a title="Edit Data" href="javascript:void(0);" onclick="editDataLocation(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-edit fa-tombol-edit"></i></a>';
+                $html .= '<a title="Delete Data" href="javascript:void(0);" onclick="deleteDataLocation(' . $row->id . ')"><i class="fa fa-trash fa-tombol-delete"></i></a>';
                 $html .= '</center></div>';
                 return $html;
             })

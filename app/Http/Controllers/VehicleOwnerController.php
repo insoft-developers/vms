@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VehicleJenis;
+use App\Models\VehicleOwner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
- class VehicleJenisController extends Controller
+class VehicleOwnerController extends Controller
 {
-   public function vehicleJenisTable()
+    public function vehicleOwnerTable()
     {
         $userid = Auth::user()->id ?? 1;
-        $data = VehicleJenis::select(['id', 'vehicle_jenis','created_at','updated_at'])->where('userid', $userid);
+        $data = VehicleOwner::where('userid', $userid);
         return DataTables::of($data)
             ->addIndexColumn()
-            ->addColumn('created_at', function($row){
+            ->addColumn('created_at', function ($row) {
                 return date('d-m-Y', strtotime($row->created_at));
             })
-            ->addColumn('updated_at', function($row){
+            ->addColumn('updated_at', function ($row) {
                 return date('d-m-Y', strtotime($row->updated_at));
             })
             ->addColumn('action', function ($row) {
                 $html = '';
                 $html .= '<div style="margin-top:-10px;"><center>';
 
-                $html .= '<a title="Edit Data" href="javascript:void(0);" onclick="editDataJenis(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-edit fa-tombol-edit"></i></a>';
-                $html .= '<a title="Delete Data" href="javascript:void(0);" onclick="deleteDataJenis(' . $row->id . ')"><i class="fa fa-trash fa-tombol-delete"></i></a>';
+                $html .= '<a title="Edit Data" href="javascript:void(0);" onclick="editData(' . $row->id . ')" style="margin-right:6px;"><i class="fa fa-edit fa-tombol-edit"></i></a>';
+                $html .= '<a title="Delete Data" href="javascript:void(0);" onclick="deleteData(' . $row->id . ')"><i class="fa fa-trash fa-tombol-delete"></i></a>';
                 $html .= '</center></div>';
                 return $html;
             })
@@ -42,9 +42,9 @@ use Yajra\DataTables\Facades\DataTables;
      */
     public function index()
     {
-        $view = 'vehicle-jenis';
+        $view = 'branch';
 
-        return view('frontend.vehicle.jenis', compact('view'));
+        return view('frontend.vehicle.vehicle_owner', compact('view'));
     }
 
     /**
@@ -68,7 +68,7 @@ use Yajra\DataTables\Facades\DataTables;
         $input = $request->all();
 
         $rules = [
-            'vehicle_jenis' => 'required',
+            'vehicle_owner' => 'required',
         ];
 
         $validator = Validator::make($input, $rules);
@@ -90,7 +90,7 @@ use Yajra\DataTables\Facades\DataTables;
         try {
 
             $input['userid'] = Auth::user()->id ?? 1;
-            VehicleJenis::create($input);
+            VehicleOwner::create($input);
             return response()->json([
                 'success' => true,
                 'message' => 'success',
@@ -122,7 +122,7 @@ use Yajra\DataTables\Facades\DataTables;
      */
     public function edit($id)
     {
-        $data = VehicleJenis::find($id);
+        $data = VehicleOwner::find($id);
         return $data;
     }
 
@@ -138,7 +138,7 @@ use Yajra\DataTables\Facades\DataTables;
         $input = $request->all();
 
         $rules = [
-            'vehicle_jenis' => 'required',
+            'vehicle_owner' => 'required',
         ];
 
         $validator = Validator::make($input, $rules);
@@ -160,7 +160,7 @@ use Yajra\DataTables\Facades\DataTables;
         try {
 
             $input['userid'] = Auth::user()->id ?? 1;
-            $data = VehicleJenis::find($id);
+            $data = VehicleOwner::find($id);
             $data->update($input);
             return response()->json([
                 'success' => true,
@@ -182,7 +182,7 @@ use Yajra\DataTables\Facades\DataTables;
      */
     public function destroy($id)
     {
-        $data = VehicleJenis::destroy($id);
+        $data = VehicleOwner::destroy($id);
         return $data;
     }
 }

@@ -70,17 +70,18 @@
                         </li>
                         <li class="list-subtitle">
                             <a href="{{ url('vehicle_merk') }}">
-                                <i class="las la-minus"></i><span class="subtitle">Merk</span>
+                                <i class="las la-minus"></i><span class="subtitle">Merk/Jenis/Tipe/<br>Location</span>
+                            </a>
+                        </li>
+                        
+                        <li class="list-subtitle">
+                            <a href="{{ url('vehicle_owner') }}">
+                                <i class="las la-minus"></i><span class="subtitle">Vehicle Owner/<br>Ownership</span>
                             </a>
                         </li>
                         <li class="list-subtitle">
-                            <a href="{{ url('vehicle_jenis') }}">
-                                <i class="las la-minus"></i><span class="subtitle">Jenis</span>
-                            </a>
-                        </li>
-                        <li class="list-subtitle">
-                            <a href="{{ url('vehicle_type') }}">
-                                <i class="las la-minus"></i><span class="subtitle">Type</span>
+                            <a href="{{ url('branch') }}">
+                                <i class="las la-minus"></i><span class="subtitle">Branch</span>
                             </a>
                         </li>
                         <li class="list-subtitle">
@@ -89,11 +90,11 @@
                             </a>
                         </li>
 
-                        <li class="list-subtitle">
+                        {{-- <li class="list-subtitle">
                             <a href="{{ url('location') }}">
                                 <i class="las la-minus"></i><span class="subtitle">Location</span>
                             </a>
-                        </li>
+                        </li> --}}
 
                     </ul>
                 </li>

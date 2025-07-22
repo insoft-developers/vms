@@ -42,7 +42,7 @@
 
 
     <div id="modal-add" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <form type="POST" id="form-add">
                     {{ csrf_field() }} {{ method_field('POST') }}
@@ -56,295 +56,95 @@
 
                         <input type="hidden" id="id" name="id">
                         <div class="card-body">
-                            <div class="collapse" id="tabs-5">
-                                <div class="card"></div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4 align-self-center"
+                                            for="vehicle_name">Vehicle Name:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="vehicle_name" name="vehicle_name"
+                                                placeholder="masukkan vehicle name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4 align-self-center"
+                                            for="branch_id">Branch:</label>
+                                        <div class="col-sm-8">
+                                            <select type="text" class="form-control" id="branch_id" name="branch_id">
+                                            <option value="">Pilih branch</option>
+                                            @foreach($branches as $m)
+                                                <option value="{{ $m->id }}">{{ $m->branch_name }}</option>
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4 align-self-center"
+                                            for="no_lambung">Nomor Lambung:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="no_lambung" name="no_lambung"
+                                                placeholder="masukkan no lambung kendaraan">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4 align-self-center"
+                                            for="police_no">Nomor Polisi:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="police_no" name="police_no"
+                                                placeholder="masukkan nomor polisi kendaraan">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4 align-self-center"
+                                            for="vehicle_merk">Merk:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="vehicle_merk" name="vehicle_merk">
+                                            <option value="">Pilih merk</option>
+                                            @foreach($merk as $m)
+                                                <option value="{{ $m->id }}">{{ $m->vehicle_merk }}</option>
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4 align-self-center"
+                                            for="vehicle_jenis">Jenis:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="vehicle_jenis" name="vehicle_jenis">
+                                            <option value="">Pilih jenis</option>
+                                            @foreach($jenis as $m)
+                                                <option value="{{ $m->id }}">{{ $m->vehicle_jenis }}</option>
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4 align-self-center"
+                                            for="vehicle_type">Type:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="vehicle_type" name="vehicle_type">
+                                            <option value="">Pilih type</option>
+                                            @foreach($type as $m)
+                                                <option value="{{ $m->id }}">{{ $m->vehicle_type }}</option>
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-6">
+                                    {{-- bagian dua --}}
+                                </div>
                             </div>
 
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
-                                        role="tab" aria-controls="pills-home" aria-selected="false">Info</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-                                        role="tab" aria-controls="pills-profile" aria-selected="false">Engine</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact"
-                                        role="tab" aria-controls="pills-contact" aria-selected="true">Vehicle
-                                        Document</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill"
-                                        href="#pills-other-document" role="tab" aria-controls="pills-other-document"
-                                        aria-selected="true">Other Document</a>
-                                </li>
-
-                            </ul>
-                            <div class="tab-content" id="pills-tabContent-2">
-                                <div class="tab-pane fade active show" id="pills-home" role="tabpanel"
-                                    aria-labelledby="pills-home-tab">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>Vehicle Name <span style="color:red;">*</span></label>
-                                                <input type="text" class="form-control" name="vehicle_name"
-                                                    id="vehicle_name" placeholder="Enter Vehicle Name Here...">
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>Current Location <span style="color:red;">*</span></label>
-                                                <select class="form-control" id="location" name="location">
-                                                    <option value="">Select</option>
-                                                    @foreach ($locations as $location)
-                                                        <option value="{{ $location->id }}">
-                                                            {{ $location->location_name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <label>Merk <span style="color:red;">*</span></label>
-                                                <select class="form-control" id="merk_id" name="merk_id">
-                                                    <option value="">Select</option>
-                                                    @foreach ($merk as $m)
-                                                        <option value="{{ $m->id }}">{{ $m->vehicle_merk }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <label>Jenis <span style="color:red;">*</span></label>
-                                                <select class="form-control" id="jenis_id" name="jenis_id">
-                                                    <option value="">Select</option>
-                                                    @foreach ($jenis as $j)
-                                                        <option value="{{ $j->id }}">{{ $j->vehicle_jenis }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <label>Type <span style="color:red;">*</span></label>
-                                                <select class="form-control" id="type_id" name="type_id">
-                                                    <option value="">Select</option>
-                                                    @foreach ($type as $t)
-                                                        <option value="{{ $t->id }}">{{ $t->vehicle_type }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>Police No <span style="color:red;">*</span></label>
-                                                <input type="text" class="form-control" name="police_no"
-                                                    id="police_no" placeholder="Enter Police No Here...">
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>Call Sign <span style="color:red;">*</span></label>
-                                                <input type="text" class="form-control" name="call_sign"
-                                                    id="call_sign" placeholder="Enter Call Sign Here...">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {{-- tab2 --}}
-                                <div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                                    aria-labelledby="pills-profile-tab">
-
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <div class="form-group">
-                                                <label>VIN No <span style="color:red;">*</span></label>
-                                                <input type="text" class="form-control" id="vin_no"
-                                                    name="vin_no" placeholder="VIN No Here....">
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <label>Engine No <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="engine_no"
-                                                name="engine_no" placeholder="Engine No Here....">
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <label>Transmition <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="transmition"
-                                                name="transmition" placeholder="Enter Vehicle Transmition Here...">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>Year Build <span style="color:red;">*</span></label>
-                                            <input type="number" class="form-control" id="year_build"
-                                                name="year_build" placeholder="ex: 2018">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>Operation Date <span style="color:red;">*</span></label>
-                                            <input type="date" class="form-control" id="operation_date"
-                                                name="operation_date">
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row" style="margin-top: 20px;">
-                                        <div class="col-4">
-                                            <label>Fuel <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="fuel" name="fuel"
-                                                placeholder="ex: Diesel">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>Cylinder <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="cylinder"
-                                                name="cylinder" placeholder="ex: 13000">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>Plat Color <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" id="plat_color"
-                                                name="plat_color" placeholder="ex: Yellow">
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                                    aria-labelledby="pills-contact-tab">
-
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <label>STNK No <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" name="stnk_no" id="stnk_no"
-                                                placeholder="STNK No here ...">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>STNK Expired Date <span style="color:red;">*</span></label>
-                                            <input type="date" class="form-control" id="stnk_expired_date"
-                                                name="stnk_expired_date">
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <label>Pajak No <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" name="pajak" id="pajak"
-                                                placeholder="Pajak No here ...">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>Pajak Expired Date <span style="color:red;">*</span></label>
-                                            <input type="date" class="form-control" id="pajak_expired_date"
-                                                name="pajak_expired_date">
-                                        </div>
-                                    </div>
-                                    <hr />
-
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <label>KIR <span style="color:red;">*</span></label>
-                                            <input type="text" class="form-control" name="kir" id="kir"
-                                                placeholder="KIR No here ...">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>KIR Expired Date <span style="color:red;">*</span></label>
-                                            <input type="date" class="form-control" id="kir_expired_date"
-                                                name="kir_expired_date">
-                                        </div>
-                                    </div>
-                                    <hr />
-                                </div>
-                                <div class="tab-pane fade" id="pills-other-document" role="tabpanel"
-                                    aria-labelledby="pills-other-document-tab">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <label>B3 No</label>
-                                            <input type="text" class="form-control" name="b3_no" id="b3_no"
-                                                placeholder="B3 No here ...">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>B3 Expired Date</label>
-                                            <input type="date" class="form-control" id="b3_expired_date"
-                                                name="b3_expired_date">
-                                        </div>
-                                    </div>
-
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <label>B3 Limbah No</label>
-                                            <input type="text" class="form-control" name="b3_limbah_no"
-                                                id="b3_limbah_no" placeholder="B3 Limbah No here ...">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>B3 Limbah Expired Date</label>
-                                            <input type="date" class="form-control" id="b3_limbah_expired_date"
-                                                name="b3_limbah_expired_date">
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <label>B3 BBM No</label>
-                                            <input type="text" class="form-control" name="b3_bbm_no"
-                                                id="b3_bbm_no" placeholder="B3 BBM No here ...">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>B3 BBM Expired Date</label>
-                                            <input type="date" class="form-control" id="b3_bbm_expired_date"
-                                                name="b3_bbm_expired_date">
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <label>Handak No</label>
-                                            <input type="text" class="form-control" name="handak_no"
-                                                id="handak_no" placeholder="Handak No here ...">
-                                        </div>
-                                        <div class="col-4">
-                                            <label>Handak Expired Date</label>
-                                            <input type="date" class="form-control" id="handak_expired_date"
-                                                name="handak_expired_date">
-                                        </div>
-                                    </div>
-                                    <hr />
-                                    <div class="row">
-                                        <div class="col-8">
-
-                                            <div class="form-group">
-                                                <label>Insurance Company</label>
-                                                <select class="form-control" id="insurance_company_id"
-                                                    name="insurance_company_id">
-                                                    <option value="">Select</option>
-                                                    @foreach ($insurance as $i)
-                                                        <option value="{{ $i->id }}">{{ $i->company_name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <label>Insurance Expired Date</label>
-                                            <input type="date" class="form-control" id="insurance_expired_date"
-                                                name="insurance_expired_date">
-                                        </div>
-                                    </div>
-                                    <hr />
-                                </div>
-
-                            </div>
                         </div>
 
                     </div>
@@ -383,11 +183,10 @@
 
 <!-- JAVASCRIPT -->
 <script>
-
     function viewData(id) {
         $(".modal-title").text("Detail Vehicle Data");
         $.ajax({
-            url: "{{ url('vehicle') }}"+"/"+id,
+            url: "{{ url('vehicle') }}" + "/" + id,
             type: "GET",
             success: function(data) {
                 $("#modal-view-content").html(data);

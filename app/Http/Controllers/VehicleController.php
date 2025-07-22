@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\InsuranceCompany;
 use App\Models\Location;
 use App\Models\Vehicle;
 use App\Models\VehicleJenis;
 use App\Models\VehicleMerk;
+use App\Models\VehicleOwner;
+use App\Models\VehicleOwnerhsip;
 use App\Models\VehicleType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,8 +65,10 @@ class VehicleController extends Controller
         $type = VehicleType::where('userid', $userid)->get();
         $locations = Location::where('userid', $userid)->get();
         $insurance = InsuranceCompany::where('userid', $userid)->get();
-
-        return view('frontend.vehicle.vehicle', compact('view', 'merk', 'jenis', 'type', 'locations', 'insurance'));
+        $branches = Branch::where('userid', $userid)->get();
+        $owners = VehicleOwner::where('userid', $userid)->get();
+        $ownerships = VehicleOwnerhsip::where('userid', $userid)->get();
+        return view('frontend.vehicle.vehicle', compact('view', 'merk', 'jenis', 'type', 'locations', 'insurance','owners','ownerships','branches'));
     }
 
     /**
